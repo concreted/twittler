@@ -1,3 +1,8 @@
 .tweet {
     text-align: center
 }
+
+.tweet_msg, .timestamp {
+    display: inline
+}
+

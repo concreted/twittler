@@ -28,11 +28,14 @@
         var i = 0;
         while(i < numNew){
           var tweet = streams.home[head - i];
-          
-          var text = '@' + tweet.user + " (" + tweet.created_at.getHours() + ":" + tweet.created_at.getMinutes() + ") " + ': ' + tweet.message;
-          
-          var $tweet = '<div class="tweet">' + text + '</div>';
-          //$tweet.appendTo($('body'));
+
+	  var timestamp = " (" + tweet.created_at.getHours() + ":" + tweet.created_at.getMinutes() + ")";          
+	  var $timestamp = '<div class="timestamp">' + timestamp + '</div>';
+		  
+          var text = '@' + tweet.user + ': ' + tweet.message;
+          var $tweetMsg = '<div class="tweet_msg">' + text + '</div>' + $timestamp;
+		  
+	  var $tweet = '<div class = "tweet">' + $tweetMsg + '</div>';
           toInsert += $tweet;
           i += 1;
         }
