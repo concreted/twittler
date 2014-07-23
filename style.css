@@ -1,4 +1,4 @@
-.twittler {
+#twittler {
 	margin-left: 20%;
     margin-right: 20%;
 	font-family: Helvetica;
@@ -6,11 +6,11 @@
 	min-width: 400px;
 }
 
-.header {
+#header {
 	text-align: left;
 }
 
-.tweets {
+#tweets {
 	position: relative;
 }
 

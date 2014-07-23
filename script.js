@@ -19,14 +19,14 @@ var updateTweets = function() {
 
 		var $timestamp = '<div class="timestamp" data-time="' + tweet.created_at + '"></div>';
         var $tweetMsg = '<div class="tweet_msg">' + text + '</div>' + $timestamp;
-		var $tweet = '<div class = "tweet">' + $tweetMsg + '</div>';
+		var $tweet = '<div class="tweet">' + $tweetMsg + '</div>';
 
         toInsert += $tweet;
 
         i += 1;
     }
 
-    $('.tweets').prepend(toInsert);
+    $('#tweets').prepend(toInsert);
 	$('.tweet').fadeIn();	
     $('.timestamp').each(function() {
 		var readableTime = moment($(this).data('time')).fromNow();
