@@ -20,9 +20,10 @@
 .tweet_msg {
     /*display: inline;*/
     position: relative;
+    top: -1px;
     text-align: left;
     font-size: 20px;
-    font-size: 2.5vw;
+    font-size: 2.3vw;
     z-index: 2;
     white-space: nowrap;
     overflow: hidden;
@@ -31,7 +32,7 @@
 
 .timestamp {
     position: absolute;
-    top: 0px;
+    bottom: 2px;
     right: 10px;
     font-size: 15px; 
     z-index: 1;
