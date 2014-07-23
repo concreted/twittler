@@ -13,15 +13,19 @@ var updateTweets = function() {
     var toInsert = '';
     var head = totalTweets - 1;
     var i = 0;
-    while(i < numNew){
+    while(i < numNew) {
         var tweet = streams.home[head - i];
-        var text = '@' + tweet.user + ': ' + tweet.message;
+        var text = tweet.message;
+		var user = '@' + tweet.user;
 
-		var $timestamp = '<div class="timestamp" data-time="' + tweet.created_at + '"></div>';
+		var $user = '<div class="user">' + user + "</div>";
+		var $timestamp = '<span class="timestamp" data-time="' + tweet.created_at + '"></span>';
         var $tweetMsg = '<div class="tweet_msg">' + text + '</div>' + $timestamp;
 		var $tweet = '<div class="tweet">' + $tweetMsg + '</div>';
 
-        toInsert += $tweet;
+		var $node = $user + $tweet + '</br>';
+		
+        toInsert += $node;
 
         i += 1;
     }
