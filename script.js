@@ -23,7 +23,7 @@ var updateTweets = function() {
         var $tweetMsg = '<div class="tweet_msg">' + text + '</div>' + $timestamp;
 		var $tweet = '<div class="tweet">' + $tweetMsg + '</div>';
 
-		var $node = $user + $tweet + '</br>';
+		var $node = '<div class="row">' + $user + $tweet + '</div>';
 		
         toInsert += $node;
 
@@ -31,7 +31,7 @@ var updateTweets = function() {
     }
 
     $('#tweets').prepend(toInsert);
-	$('.tweet').fadeIn();	
+	$('.row').fadeIn();	
     $('.timestamp').each(function() {
 		var readableTime = moment($(this).data('time')).fromNow();
 		$(this).text(readableTime);
