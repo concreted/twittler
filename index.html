@@ -8,15 +8,19 @@
     <script src="script.js"></script>
   </head>
   <body>
-    <script>
-
+	<script>
+	
       $(document).ready(function(){
-        var $body = $('body');
-        $body.html('');
+        var $tweets = $('.tweets');
+        $tweets.html('');
 
         setInterval(update, 1000);
       });
 
     </script>
+	<div class="twittler">
+	<div class="header"><h1>twittler.</h1></div>
+	<div class="tweets"></div>
+	</div>
   </body>
 </html>

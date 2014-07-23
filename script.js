@@ -17,20 +17,20 @@ var updateTweets = function() {
         var tweet = streams.home[head - i];
         var text = '@' + tweet.user + ': ' + tweet.message;
 
-	var $timestamp = '<div class="timestamp" data-time="' + tweet.created_at + '"></div>';
+		var $timestamp = '<div class="timestamp" data-time="' + tweet.created_at + '"></div>';
         var $tweetMsg = '<div class="tweet_msg">' + text + '</div>' + $timestamp;
-	var $tweet = '<div class = "tweet">' + $tweetMsg + '</div>';
+		var $tweet = '<div class = "tweet">' + $tweetMsg + '</div>';
 
         toInsert += $tweet;
 
         i += 1;
     }
 
-    $('body').prepend(toInsert);
-
+    $('.tweets').prepend(toInsert);
+	$('.tweet').fadeIn();	
     $('.timestamp').each(function() {
-	var readableTime = moment($(this).data('time')).fromNow();
-	$(this).text(readableTime);
+		var readableTime = moment($(this).data('time')).fromNow();
+		$(this).text(readableTime);
     });
 
 };

@@ -1,16 +1,30 @@
+.twittler {
+	margin-left: 20%;
+    margin-right: 20%;
+	font-family: Helvetica;
+	text-align: center;
+	min-width: 400px;
+}
+
+.header {
+	text-align: left;
+}
+
+.tweets {
+	position: relative;
+}
+
 .tweet {
     position: relative;
     z-index: 1;
     text-align: center;
     background: #99CCFF;
     /*border: 1px solid blue;*/
-    border-radius: 15px;
+	border-radius: 15px;
     padding: 10px;
-    margin-left: 20%;
-    margin-right: 20%;
     margin-bottom: 2px;
     height: 40px;
-    font-family: Helvetica;
+	display: none;
 }
 /*
 .tweet:nth-child(odd) {
@@ -23,7 +37,7 @@
     top: -1px;
     text-align: left;
     font-size: 20px;
-    font-size: 2.3vw;
+    /*font-size: 2.3vw;*/
     z-index: 2;
     white-space: nowrap;
     overflow: hidden;
