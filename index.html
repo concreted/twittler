@@ -8,22 +8,23 @@
   <body>
     <script>
 
-      var index = 0;
+      var totalTweets = 0;
+      var numNew = 0;
 
       var checkNewTweets = function() {
-        var numTweets = streams.home.length-1;
-        if (numTweets > index) {
-          numNew = numTweets - index;
-          index = numTweets;
-          console.log(numNew + ", " + index);
-          return numNew;
-        }
-        return 0;
+        var numTweets = streams.home.length;
+        
+        numNew = numTweets - totalTweets;
+        
+        totalTweets = numTweets;
+        
+        if (numNew > 0)
+          console.log(numNew + ", " + totalTweets);
       };
 
-      var updateTweets = function(numNew) {
+      var updateTweets = function() {
         var toInsert = '';
-        var head = streams.home.length-1;
+        var head = totalTweets - 1;
         var i = 0;
         while(i < numNew){
           var tweet = streams.home[head - i];
@@ -39,16 +40,13 @@
       };
 
       var update = function() {
-        updateTweets(checkNewTweets());
+	checkNewTweets();
+        updateTweets();
       };
 
       $(document).ready(function(){
         var $body = $('body');
         $body.html('');
-
-        //index = checkNewTweets();
-
-        //updateTweets(index);
 
         setInterval(update, 1000);
       });
