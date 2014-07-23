@@ -8,19 +8,49 @@
   <body>
     <script>
 
+      var index = 0;
+
+      var checkNewTweets = function() {
+        var numTweets = streams.home.length-1;
+        if (numTweets > index) {
+          numNew = numTweets - index;
+          index = numTweets;
+          console.log(numNew + ", " + index);
+          return numNew;
+        }
+        return 0;
+      };
+
+      var updateTweets = function(numNew) {
+        var toInsert = '';
+        var head = streams.home.length-1;
+        var i = 0;
+        while(i < numNew){
+          var tweet = streams.home[head - i];
+          
+          var text = '@' + tweet.user + " (" + tweet.created_at.getHours() + ":" + tweet.created_at.getMinutes() + ") " + ': ' + tweet.message;
+          
+          var $tweet = '<div class="tweet">' + text + '</div>';
+          //$tweet.appendTo($('body'));
+          toInsert += $tweet;
+          i += 1;
+        }
+        $('body').prepend(toInsert);
+      };
+
+      var update = function() {
+        updateTweets(checkNewTweets());
+      };
+
       $(document).ready(function(){
         var $body = $('body');
         $body.html('');
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div class="tweet"></div>');
-          $tweet.text('@' + tweet.user + " (" + tweet.created_at.getHours() + ":" + tweet.created_at.getMinutes() + ") " + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
-        }
+        //index = checkNewTweets();
 
+        //updateTweets(index);
+
+        setInterval(update, 1000);
       });
 
     </script>
