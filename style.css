@@ -1,3 +1,7 @@
+h1, h2 {
+    display: inline-block;
+}
+
 #twittler {
 	margin-left: auto;
     margin-right: auto;

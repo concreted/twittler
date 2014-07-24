@@ -8,18 +8,53 @@
     <script src="script.js"></script>
   </head>
   <body>
-	<script>
-	
+    <script>
+      
       $(document).ready(function(){
         var $tweets = $('.tweets');
         $tweets.html('');
 
-        setInterval(update, 1000);
+        
+        //refreshID = setInterval(update, 1000);
+        
+      
+        var refreshID = undefined;
+
+        $('#toggleFeed').on('click', function() {
+          
+          if (refreshID === undefined) {
+            $(this).text("live feed on.");
+            refreshID = setInterval(update, 1000);
+          }
+          else {
+            $(this).text("live feed off.");
+            clearInterval(refreshID);
+            refreshID = undefined;
+          }
+        });
+
+        $('#update').on('click', function() {
+          update();
+        });
+
+        $('#showAll').on('click', function() {
+          showAllTweets();
+        });
+
+        $('#tweets').on('click', '.user', function() {
+          var user = $(this).text();
+          showUserTweets(user);
+        });
+      
       });
 
     </script>
 	<div id="twittler">
-	<div id="header"><h1>twittler.</h1></div>
+	<div id="header"><h1>twittler.</h1>
+	  <a href="#" id="toggleFeed">toggle live feed.</a>
+	  <a href="#" id="update">update.</a>
+	  <a href="#" id="showAll">show all.</a>
+	</div>
 	<div id="tweets"></div>
 	</div>
   </body>
