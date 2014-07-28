@@ -17,7 +17,8 @@ var showUserTweets = function(user) {
 	var current = $(this).children('.user');
 	var row_user = current.text();
 	if (row_user !== user) {
-	    $(this).fadeOut();
+	    //$(this).fadeOut();
+	    $(this).hide();
 	}
     });
     /*
@@ -41,7 +42,7 @@ var updateTweets = function() {
         var text = tweet.message;
 	var user = '@' + tweet.user;
 
-	var $user = '<div class="user">' + user + "</div>";
+	var $user = '<div class="user no-underline">' + "<a href='#' class='no-underline'>" + user + "</a>" + "</div>";
 	var $timestamp = '<span class="timestamp" data-time="' + tweet.created_at + '"></span>';
         var $tweetMsg = '<div class="tweet_msg">' + text + '</div>' + $timestamp;
 	var $tweet = '<div class="tweet">' + $tweetMsg + '</div>';

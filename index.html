@@ -43,6 +43,7 @@
 
         $('#tweets').on('click', '.user', function() {
           var user = $(this).text();
+          console.log(user);
           showUserTweets(user);
         });
       
@@ -51,9 +52,11 @@
     </script>
 	<div id="twittler">
 	<div id="header"><h1>twittler.</h1>
-	  <a href="#" id="toggleFeed">toggle live feed.</a>
-	  <a href="#" id="update">update.</a>
-	  <a href="#" id="showAll">show all.</a>
+	  <ul class="alignright">
+	    <li><a href="#" id="toggleFeed" class="round-button">toggle live feed.</a></li>
+	    <li><a href="#" id="update" class="round-button">update.</a></li>
+	    <li><a href="#" id="showAll" class="round-button">show all.</a></li>
+	  </ul>
 	</div>
 	<div id="tweets"></div>
 	</div>
