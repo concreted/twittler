@@ -14,14 +14,9 @@
         var $tweets = $('.tweets');
         $tweets.html('');
 
-        
-        //refreshID = setInterval(update, 1000);
-        
-      
         var refreshID = undefined;
 
-        $('#toggleFeed').on('click', function() {
-          
+        $('#toggleFeed').on('click', function() {          
           if (refreshID === undefined) {
             $(this).text("live feed on.");
             refreshID = setInterval(update, 1000);
@@ -37,14 +32,15 @@
           update();
         });
 
-        $('#showAll').on('click', function() {
-          showAllTweets();
-        });
-
         $('#tweets').on('click', '.user', function() {
-          var user = $(this).text();
-          console.log(user);
-          showUserTweets(user);
+          if (user === null) {
+            user = $(this).text();
+            console.log(user);
+            showUserTweets(user);
+          }
+          else {
+            showAllTweets();
+          }
         });
       
       });
@@ -55,7 +51,6 @@
 	  <ul class="alignright">
 	    <li><a href="#" id="toggleFeed" class="round-button">toggle live feed.</a></li>
 	    <li><a href="#" id="update" class="round-button">update.</a></li>
-	    <li><a href="#" id="showAll" class="round-button">show all.</a></li>
 	  </ul>
 	</div>
 	<div id="tweets"></div>

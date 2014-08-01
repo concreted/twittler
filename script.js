@@ -1,5 +1,6 @@
 var totalTweets = 0;
 var numNew = 0;
+var user = null;
 
 var checkNewTweets = function() {
     var numTweets = streams.home.length;
@@ -9,8 +10,17 @@ var checkNewTweets = function() {
     totalTweets = numTweets;
 };
 
-var showUserTweets = function(user) {
-    if (user === undefined) return;
+
+var showAllTweets = function() {
+    user = null;
+    $('.row').fadeIn();
+};
+
+var showUserTweets = function() {
+    if (user === null) {
+	showAllTweets();
+	return;
+    }
     if (user[0] !== '@') user = '@' + user;
     
     $('.row').each(function(i) {
@@ -20,17 +30,10 @@ var showUserTweets = function(user) {
 	    //$(this).fadeOut();
 	    $(this).hide();
 	}
+	else {
+	    $(this).fadeIn();
+	}
     });
-    /*
-    $.grep($('.row'), function(obj, i) {
-	console.log(obj);
-	return true;//obj.find('.user').text !== user;
-    })
-    */
-};
-
-var showAllTweets = function() {
-    $('.row').fadeIn();
 };
 
 var updateTweets = function() {
@@ -55,7 +58,9 @@ var updateTweets = function() {
     }
 
     $('#tweets').prepend(toInsert);
-    $('.row').fadeIn();	
+
+    showUserTweets();
+
     $('.timestamp').each(function() {
 	var readableTime = moment($(this).data('time')).fromNow();
 	$(this).text(readableTime);
